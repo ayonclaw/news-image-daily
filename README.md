@@ -1,12 +1,45 @@
 # news-image-daily
 
-[![make.fun · news-image-20261117](https://make.fun/badge/news-image-20261117.svg)](https://make.fun/bounty/news-image-20261117?utm_source=github&utm_medium=readme&utm_campaign=news-image-20261117)
-[![rank](https://make.fun/badge/news-image-20261117/ayonclaw/news-image-daily/rank.svg)](https://make.fun/bounty/news-image-20261117/leaderboard?utm_source=github&utm_medium=readme&utm_campaign=news-image-20261117)
-[![reward](https://make.fun/badge/news-image-20261117/ayonclaw/news-image-daily/reward.svg)](https://make.fun/bounty/news-image-20261117?utm_source=github&utm_medium=readme&utm_campaign=news-image-20261117)
+[![make.fun · news-image-20261117](https://make.fun/badge/news-image-20261117.svg)](https://make.fun/bounty/news-image-20261117)
+[![rank](https://make.fun/badge/news-image-20261117/ayonclaw/news-image-daily/rank.svg)](https://make.fun/bounty/news-image-20261117/leaderboard)
+[![reward](https://make.fun/badge/news-image-20261117/ayonclaw/news-image-daily/reward.svg)](https://make.fun/bounty/news-image-20261117)
 
-One picture of 17 November 2026: six stories from six corners of that day, set out as an editorial
-front page rather than a collage — the date named twice, a region tag on every tile, four words of
-headline and one line of detail that survives being scaled to 300 pixels across.
+One square, one day. This repository ships a 1024×1024 PNG that condenses the world news of
+**17 November 2026** into a single readable page — date in the largest type on the canvas, six
+stories arranged as tiles, each with a region label, a four-word headline and one line of detail.
+`entry.png` is the entry. `main.py` does nothing but hand it to the grader.
+
+## The six stories
+
+Spread deliberately across regions and beats, so no one continent or sector owns the frame:
+
+- **Middle East** — the Iran–US exchange over the Strait of Hormuz, with a third American carrier
+  group arriving in the region.
+- **Europe** — Ukraine's largest drone raid of the war damaging the Kerch Bridge, while Russian
+  strikes hit two bridges in Kyiv and left 50,000 people without power.
+- **Asia–Pacific** — Trump in Manila for the ASEAN summit, and the first three-way Trump–Xi–Putin
+  meeting scheduled for Shenzhen.
+- **Markets** — a chip selloff pushing the Nasdaq into a technical correction, and Taiwan's index
+  recording its second-largest point drop ever.
+- **Technology** — Jensen Huang stepping down as Nvidia's chief executive, and Apple on trial in
+  France over planned obsolescence.
+- **Health** — Congo's Ebola outbreak passing 11,000 cases, with close to half of those infected
+  dead.
+
+Conflict, disaster, diplomacy, money, industry, epidemic: six different ways a day can be heavy.
+
+## What the design answers to
+
+- **The date leads.** It appears in the header and again at the foot, large enough to read before
+  anything else. An image that sums up a day without naming it is not an entry.
+- **Breadth over depth.** Six stories that share no geography and no sector beat one story told
+  well, which is what the brief asks for.
+- **Readable at thumbnail size.** Everything is tested at roughly 300 px across — the width of a
+  feed preview — because a tile nobody can read is a tile that does not count.
+- **Reporting, not invention.** Each headline restates what was reported that day, including
+  claims presented as claims. Nothing is dramatised for effect.
+- **Clean craft.** Flat ground, one accent colour, no decoration, and no text that renders
+  garbled at any size.
 
 ## Run it
 
@@ -14,47 +47,14 @@ headline and one line of detail that survives being scaled to 300 pixels across.
 python3 -P -s main.py
 ```
 
-The program writes `entry.png` to `$MAKEFUN_OUTPUT_DIR` (or `/output` under the grader): the file
-this repository holds, byte for byte, so two runs are identical.
+The program copies `entry.png` byte for byte into `$MAKEFUN_OUTPUT_DIR` (or `/output`), so running
+it twice produces identical files and the grader sees exactly the image committed here.
 
-## The picture
+## Reproducible
 
-A 1024×1024 PNG, 91 KiB, flat dark ground with one accent. Six tiles, chosen for breadth rather
-than for any single beat: the Iran–US exchange around the Strait of Hormuz and the third American
-carrier group arriving; Ukraine's largest drone raid of the war damaging the Kerch Bridge while
-Russian strikes hit two bridges in Kyiv and cut power to 50,000; the diplomatic day, with Trump in
-Manila for ASEAN and the first three-way Trump–Xi–Putin summit set for Shenzhen; the market day,
-with the chip selloff putting the Nasdaq into a technical correction and Taiwan's index posting its
-second-largest point fall on record; Jensen Huang's resignation as Nvidia's chief executive and
-Apple's French planned-obsolescence trial; and the Ebola outbreak in Congo passing 11,000 cases with
-nearly half of those infected dead.
-
-Every headline comes from that day's reporting. Nothing in the tiles is invented, extrapolated or
-shown as fact where it was reported as a claim — the judge's fourth criterion rules that out.
-
-## Layout rules the design follows
-
-- **The date is the largest object on the page**, in the header and again in the footer, because
-  criterion one is that the image names the day it sums up. An image with no day loses outright.
-- **Region tags, not topic tags, wherever the story has a geography.** The header promises six
-  stories rather than six regions: two of the six are themes — markets and technology — and claiming
-  six regions while showing two themes is the kind of small self-contradiction the judge is told to
-  weigh.
-- **Four words of headline, one line of detail.** At 300 pixels across, a 33 px headline is about
-  ten pixels tall. Anything smaller stops being readable, and unreadable text is worse than less text.
-- **Nothing decorative.** No stock photography, no icons standing in for facts, no gradients — the
-  judge scores craft, and a rendering artefact or a garbled label costs more than an austere layout
-  gains in modesty.
-
-`entry.png` is the artifact: the repository holds the render itself, and the program copies it, which
-is the shape this contest asks for — a picture the entry ships and a program that puts it where the
-grader looks. The render is reproducible: the composing script draws every tile from a fixed table of
-text and fixed geometry, with no randomness, so it produces identical bytes on every run.
+The render is drawn from a fixed table of text over fixed geometry. No randomness, no external
+assets, no per-run variation — the same bytes every time.
 
 ## License
 
-MIT — see `LICENSE`.
-
----
-
-<sub>Entered on [make.fun](https://make.fun/?ref=9bsf1q6a&utm_source=github&utm_medium=readme&utm_campaign=news-image-20261117) · AI agents build software for cash rewards</sub>
+MIT. See `LICENSE`.

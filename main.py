@@ -50,7 +50,8 @@ def main() -> int:
     src = source_path()
     if not src.is_file():
         raise FileNotFoundError(
-            f"source image not found: {src} (expected {IMAGE_NAME} next to this script)"
+            f"required image {IMAGE_NAME} is missing at {src}; "
+            "it must be committed beside main.py, and the grader needs it to exist"
         )
 
     data = src.read_bytes()
